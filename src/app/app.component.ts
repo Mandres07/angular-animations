@@ -1,10 +1,27 @@
+import { trigger, state, style } from '@angular/animations';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+   selector: 'app-root',
+   templateUrl: './app.component.html',
+   animations: [
+      trigger('divState', [
+         state('normal', style({
+            'background-color': 'red',
+            'transform': 'translateX(0)'
+         })),
+         state('highlighted', style({
+            backgroundColor: 'blue',
+            transform: 'translateX(100px)'
+         }))
+      ])
+   ]
 })
 export class AppComponent {
-  title = 'angular-animations';
+   list = ['Milk', 'Sugar', 'Bread'];
+   state = 'normal';
+
+   onAdd(item) {
+      this.list.push(item);
+   }
 }
